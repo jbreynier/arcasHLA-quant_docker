@@ -1,5 +1,5 @@
 # work from latest LTS ubuntu release
-# from github.com/roseorenbuch/arcasHLA-quant
+# Modified from github.com/roseorenbuch/arcasHLA-quant
 FROM ubuntu:18.04
 
 # set the environment variables
@@ -78,3 +78,6 @@ RUN git clone https://github.com/roseorenbuch/arcasHLA-quant.git arcasHLA-quant
 ENV PATH="${PATH}:/home/arcasHLA-quant/"
 
 RUN arcasHLA reference --update
+
+# Fix bug: arcashla customize can only run from arcasHLA-quant directory
+WORKDIR /home/arcasHLA-quant
